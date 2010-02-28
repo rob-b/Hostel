@@ -1,0 +1,28 @@
+{% load i18n %}
+
+
+    {% if form.non_field_errors %}
+    {{ form.non_field_errors }}
+    {% endif %}
+    {% for field in form.visible_fields %}
+    <div {% if field.errors %}class=" error"{% endif %}>
+        {% if forloop.first %}
+            {% for hidden_field in form.hidden_fields %}
+            {{ hidden_field }}
+            {% endfor %}
+        {% endif %}
+
+
+        {{ field.errors }}
+        <label for="{{ field.auto_id }}" class="clearfix">
+            {{ field.label }}
+            {% if field.field.required %}*{% endif %}
+        </label>
+
+        {{ field }}
+        {% if field.help_text %}
+        <span>{{ field.help_text }}</span>
+        {% endif %}
+    </div>
+    {% endfor %}
+    <p class="required">* {% trans 'Required fields' %}</p>
