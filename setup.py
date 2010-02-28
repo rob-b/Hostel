@@ -6,10 +6,11 @@ setup(
     author = "Rob Berry",
     author_email = "",
     url = "http://github.com/rob-b/hostel/",
+    zip_safe = False,
 
-    packages = find_packages('hostel'),
+    packages = find_packages(),
     license = "MIT License",
-    keywords = "django utilitiess",
+    keywords = "django utilities",
     description = "Some reusable components for django apps",
     classifiers = [
         "Intended Audience :: Developers",
