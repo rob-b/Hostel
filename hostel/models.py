@@ -1,4 +1,3 @@
-import markdown
 from django.db import models
 from django.utils.safestring import mark_safe
 
@@ -19,8 +18,8 @@ class MarkdownField(models.TextField):
         cls.add_to_class(field_as_html_name, property(as_html))
 
     def pre_save(self, model_instance, add):
+        import markdown
         markup = getattr(model_instance, self.attname)
-
         rendered = markdown.markdown(markup, safe_mode='remove')
         setattr(model_instance, _field_name(self.attname), rendered)
         return markup
